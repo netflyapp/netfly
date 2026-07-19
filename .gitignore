@@ -33,3 +33,6 @@ src-tauri/target/
 
 # Superpowers scratch directory
 .superpowers/
+
+# Personal notes
+task.md
