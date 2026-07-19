@@ -1,0 +1,26 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for Netfly main window and content webviews",
+  "windows": ["main"],
+  "webviews": ["main", "content-*"],
+  "permissions": [
+    "core:default",
+    "core:window:default",
+    "core:window:allow-set-focus",
+    "core:webview:default",
+    "core:webview:allow-create-webview",
+    "core:webview:allow-webview-position",
+    "core:webview:allow-webview-size",
+    "core:webview:allow-set-webview-position",
+    "core:webview:allow-set-webview-size",
+    "core:webview:allow-set-webview-focus",
+    "core:webview:allow-webview-show",
+    "core:webview:allow-webview-hide",
+    "core:webview:allow-webview-close",
+    "core:webview:allow-print",
+    "core:event:default",
+    "core:app:default",
+    "opener:default"
+  ]
+}

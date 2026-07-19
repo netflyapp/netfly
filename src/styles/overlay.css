@@ -1,0 +1,27 @@
+#overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  background: var(--backdrop);
+  backdrop-filter: blur(6px);
+  animation: overlay-in var(--t-med) var(--ease);
+}
+
+#overlay[hidden] {
+  display: none;
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+#overlay[data-view='settings'] {
+  align-items: center;
+  padding-top: 0;
+}

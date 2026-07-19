@@ -1,0 +1,58 @@
+:root {
+  color-scheme: dark;
+
+  /* surfaces — cool near-violet dark grays */
+  --bg-0: oklch(0.16 0.012 285);
+  --bg-1: oklch(0.2 0.014 285);
+  --bg-2: oklch(0.24 0.016 285);
+  --bg-3: oklch(0.29 0.018 285);
+  --backdrop: oklch(0.1 0.01 285 / 0.55);
+
+  /* text */
+  --fg-0: oklch(0.93 0.008 285);
+  --fg-1: oklch(0.7 0.012 285);
+  --fg-2: oklch(0.52 0.012 285);
+
+  /* accents */
+  --accent: oklch(0.74 0.11 300);
+  --accent-dim: oklch(0.74 0.11 300 / 0.18);
+  --danger: oklch(0.68 0.17 25);
+  --ok: oklch(0.75 0.13 155);
+  --border: oklch(1 0 0 / 0.07);
+  --border-strong: oklch(1 0 0 / 0.14);
+
+  /* radii */
+  --r-s: 6px;
+  --r-m: 10px;
+  --r-l: 14px;
+
+  /* typography */
+  --font:
+    -apple-system, ui-sans-serif, system-ui, 'SF Pro Text', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --fs-xs: 11px;
+  --fs-s: 12px;
+  --fs-m: 13px;
+  --fs-l: 15px;
+  --fs-xl: 20px;
+
+  /* motion */
+  --t-fast: 120ms;
+  --t-med: 200ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* layout */
+  --sidebar-w: 240px;
+  --topbar-h: 44px;
+  --traffic-lights-w: 78px;
+
+  /* elevation */
+  --shadow-palette: 0 12px 40px oklch(0 0 0 / 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t-med: 0ms;
+  }
+}

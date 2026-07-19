@@ -1,0 +1,109 @@
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  background: var(--bg-0);
+  border-bottom: 1px solid var(--border);
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+
+#topbar button,
+#topbar input {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+/* room for the macOS traffic lights when the sidebar is hidden */
+#app.sidebar-collapsed #topbar {
+  padding-left: var(--traffic-lights-w);
+}
+
+.nav-btn {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-s);
+  font-size: var(--fs-l);
+  color: var(--fg-1);
+  transition:
+    background var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
+}
+
+.nav-btn:hover {
+  background: var(--bg-1);
+  color: var(--fg-0);
+}
+
+.nav-btn:active {
+  background: var(--bg-2);
+}
+
+.url-pill {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  margin: 0 6px;
+  padding: 0 12px;
+  border-radius: var(--r-m);
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  transition:
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.url-pill:hover {
+  background: var(--bg-2);
+  border-color: var(--border-strong);
+}
+
+.url-pill-icon {
+  flex-shrink: 0;
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+
+.url-pill-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-m);
+  color: var(--fg-0);
+}
+
+.url-pill.placeholder .url-pill-text {
+  color: var(--fg-2);
+}
+
+.url-pill.loading .url-pill-icon {
+  color: var(--accent);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* find mode swaps the pill for the find bar */
+#topbar .findbar {
+  display: none;
+}
+
+#topbar.find-open .findbar {
+  display: flex;
+}
+
+#topbar.find-open .url-pill {
+  display: none;
+}
