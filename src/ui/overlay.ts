@@ -1,6 +1,7 @@
 import { ipc } from '../ipc'
 import { getState, setUi } from '../state'
 import type { OverlayView } from '../types'
+import { scheduleTopbarHide } from './topbar'
 
 type Cleanup = (() => void) | void
 
@@ -39,6 +40,7 @@ export async function hideOverlay(): Promise<void> {
   container.replaceChildren()
   setUi({ overlay: 'none' })
   await ipc.setOverlay(false)
+  scheduleTopbarHide()
 }
 
 export function overlayOpen(): boolean {

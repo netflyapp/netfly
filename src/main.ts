@@ -18,7 +18,7 @@ import { hideOverlay, overlayOpen } from './ui/overlay'
 import { openPalette } from './ui/palette'
 import { openSettings } from './ui/settings'
 import { applySidebarCollapsed, mountSidebar, syncInsets, toggleSidebar } from './ui/sidebar'
-import { mountTopbar } from './ui/topbar'
+import { applyAutoHide, mountTopbar, showTopbar } from './ui/topbar'
 import { displayUrl } from './util/favicon'
 
 function wireActions(): void {
@@ -37,7 +37,10 @@ function wireActions(): void {
         () => void ipc.tabSelect(i),
       ]),
     ),
-    palette: () => void openPalette(),
+    palette: () => {
+      showTopbar()
+      void openPalette()
+    },
     back: () => void ipc.goBack(),
     forward: () => void ipc.goForward(),
     reload: () => void ipc.reload(false),
@@ -63,6 +66,7 @@ function wireEvents(): void {
     rebuildKeymap(config)
     syncChordsToContent()
     applySidebarCollapsed(config.ui.sidebar_collapsed)
+    applyAutoHide()
   })
   void events.onEscape(() => void handleEscape())
 
@@ -95,6 +99,7 @@ async function boot(): Promise<void> {
   rebuildKeymap(config)
   syncChordsToContent()
   applySidebarCollapsed(config.ui.sidebar_collapsed)
+  applyAutoHide()
   await syncInsets()
 }
 

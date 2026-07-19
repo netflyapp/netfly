@@ -111,6 +111,13 @@ function renderGeneral(content: HTMLElement): void {
       'Host-based blocklist with cosmetic filtering.',
     ),
     field(
+      'Auto-hide address bar',
+      toggle(config.ui.auto_hide_topbar, (v) =>
+        void ipc.configSetUi(config.ui.sidebar_width, config.ui.sidebar_collapsed, v),
+      ),
+      'Hide the top bar when not in use. Hover the top edge to reveal.',
+    ),
+    field(
       'Downloads folder',
       el('code', { class: 'settings-code', text: config.download_dir }),
     ),
