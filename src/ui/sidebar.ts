@@ -44,10 +44,11 @@ function render(): void {
 
 /** Toggle collapse: CSS transition on shell + native re-layout + persist. */
 export async function toggleSidebar(): Promise<void> {
-  const collapsed = !getState().ui.sidebarCollapsed
+  const { config, ui } = getState()
+  const collapsed = !ui.sidebarCollapsed
   applySidebarCollapsed(collapsed)
-  await ipc.setContentInsets(TOPBAR_HEIGHT, collapsed ? 0 : SIDEBAR_WIDTH, 0, 0)
-  await ipc.configSetUi(SIDEBAR_WIDTH, collapsed)
+  await syncInsets()
+  await ipc.configSetUi(SIDEBAR_WIDTH, collapsed, config.ui.auto_hide_topbar)
 }
 
 /** Apply collapse state to shell DOM + store (no persistence). */
@@ -58,6 +59,7 @@ export function applySidebarCollapsed(collapsed: boolean): void {
 
 /** Push current insets to Rust (boot + after restore). */
 export async function syncInsets(): Promise<void> {
-  const collapsed = getState().ui.sidebarCollapsed
-  await ipc.setContentInsets(TOPBAR_HEIGHT, collapsed ? 0 : SIDEBAR_WIDTH, 0, 0)
+  const { config, ui } = getState()
+  const topInset = config.ui.auto_hide_topbar && !ui.topbarVisible ? 0 : TOPBAR_HEIGHT
+  await ipc.setContentInsets(topInset, ui.sidebarCollapsed ? 0 : SIDEBAR_WIDTH, 0, 0)
 }
