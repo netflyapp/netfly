@@ -37,8 +37,8 @@ export const ipc = {
   configSetBinding: (action: string, chords: string[]) =>
     invoke<Config>('config_set_binding', { action, chords }),
   configResetBinding: (action: string) => invoke<Config>('config_reset_binding', { action }),
-  configSetUi: (sidebarWidth: number, sidebarCollapsed: boolean) =>
-    invoke<Config>('config_set_ui', { sidebarWidth, sidebarCollapsed }),
+  configSetUi: (sidebarWidth: number, sidebarCollapsed: boolean, autoHideTopbar: boolean) =>
+    invoke<Config>('config_set_ui', { sidebarWidth, sidebarCollapsed, autoHideTopbar }),
   configSetGeneral: (opts: {
     startPage?: string
     defaultSearch?: string

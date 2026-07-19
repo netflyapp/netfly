@@ -1,6 +1,7 @@
 import { ipc } from '../ipc'
 import { getState, setUi } from '../state'
 import { el } from '../util/dom'
+import { showTopbar } from './topbar'
 
 let input: HTMLInputElement
 let bar: HTMLElement
@@ -50,6 +51,7 @@ export function mountFindbar(topbar: HTMLElement): void {
 }
 
 export function openFindbar(): void {
+  showTopbar()
   setUi({ findOpen: true })
   input.focus()
   input.select()

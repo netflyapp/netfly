@@ -17,6 +17,7 @@ export type ChordSet = string | string[]
 export interface UiConfig {
   sidebar_width: number
   sidebar_collapsed: boolean
+  auto_hide_topbar: boolean
 }
 
 export interface Config {

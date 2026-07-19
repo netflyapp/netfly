@@ -4,6 +4,7 @@ export interface UiState {
   sidebarCollapsed: boolean
   overlay: OverlayView
   findOpen: boolean
+  topbarVisible: boolean
 }
 
 export interface AppState {
@@ -26,7 +27,7 @@ const DEFAULT_CONFIG: Config = {
   default_search: 'https://duckduckgo.com/?q={}',
   restore_session: true,
   adblock: true,
-  ui: { sidebar_width: 240, sidebar_collapsed: false },
+  ui: { sidebar_width: 240, sidebar_collapsed: false, auto_hide_topbar: false },
   search_engines: {},
   bindings: {},
 }
@@ -34,7 +35,7 @@ const DEFAULT_CONFIG: Config = {
 let state: AppState = {
   snapshot: DEFAULT_SNAPSHOT,
   config: DEFAULT_CONFIG,
-  ui: { sidebarCollapsed: false, overlay: 'none', findOpen: false },
+  ui: { sidebarCollapsed: false, overlay: 'none', findOpen: false, topbarVisible: true },
 }
 
 const listeners = new Set<Listener>()

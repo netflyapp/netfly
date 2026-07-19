@@ -3,6 +3,16 @@
 All notable changes to Netfly are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [3.0.1] — 2026-07-19
+
+### Added
+
+- **Auto-hide address bar** (Settings → General) — inspired by Arc/Zen.
+  When enabled, the top bar slides out of view after 600 ms of inactivity.
+  Hover the top 4 px of the window to reveal. Content insets adjust in
+  real time so the page fills the full height. Find bar (`⌘F`)
+  automatically shows the bar.
+
 ## [3.0.0] — 2026-07-19
 
 Complete UI rewrite: the vim-modal qutebrowser-style shell is replaced with an

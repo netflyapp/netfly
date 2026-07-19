@@ -21,6 +21,7 @@ adblock = true
 [ui]
 sidebar_width = 240
 sidebar_collapsed = false
+auto_hide_topbar = false
 
 [search_engines]
 g = "https://www.google.com/search?q={}"
@@ -65,6 +66,7 @@ impl ChordSet {
 pub struct UiConfig {
     pub sidebar_width: u32,
     pub sidebar_collapsed: bool,
+    pub auto_hide_topbar: bool,
 }
 
 impl Default for UiConfig {
@@ -72,6 +74,7 @@ impl Default for UiConfig {
         Self {
             sidebar_width: 240,
             sidebar_collapsed: false,
+            auto_hide_topbar: false,
         }
     }
 }
@@ -152,10 +155,11 @@ impl Config {
         self.bindings.remove(action);
     }
 
-    pub fn set_ui(&mut self, sidebar_width: u32, sidebar_collapsed: bool) {
+    pub fn set_ui(&mut self, sidebar_width: u32, sidebar_collapsed: bool, auto_hide_topbar: bool) {
         self.ui = UiConfig {
             sidebar_width,
             sidebar_collapsed,
+            auto_hide_topbar,
         };
     }
 
@@ -259,6 +263,7 @@ mod tests {
         assert!(cfg.search_engines.contains_key("g"));
         assert_eq!(cfg.ui.sidebar_width, 240);
         assert!(!cfg.ui.sidebar_collapsed);
+        assert!(!cfg.ui.auto_hide_topbar);
     }
 
     #[test]

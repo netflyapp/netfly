@@ -524,10 +524,11 @@ fn config_set_ui(
     state: State<'_, Arc<AppState>>,
     sidebar_width: u32,
     sidebar_collapsed: bool,
+    auto_hide_topbar: bool,
 ) -> Result<Config, String> {
     let cfg = {
         let mut cfg = state.config.lock();
-        cfg.set_ui(sidebar_width, sidebar_collapsed);
+        cfg.set_ui(sidebar_width, sidebar_collapsed, auto_hide_topbar);
         cfg.save()?;
         cfg.clone()
     };
