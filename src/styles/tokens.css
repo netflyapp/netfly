@@ -39,6 +39,7 @@
   /* motion */
   --t-fast: 120ms;
   --t-med: 200ms;
+  --t-topbar: 180ms;
   --ease: cubic-bezier(0.2, 0, 0, 1);
 
   /* layout */
@@ -54,5 +55,6 @@
   :root {
     --t-fast: 0ms;
     --t-med: 0ms;
+    --t-topbar: 0ms;
   }
 }

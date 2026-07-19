@@ -107,3 +107,46 @@
 #topbar.find-open .url-pill {
   display: none;
 }
+
+/* Auto-hide mode: collapse grid row & fix topbar over the top edge */
+#app.auto-hide-topbar {
+  --topbar-h: 0px;
+}
+
+#topbar.auto-hide {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: var(--sidebar-current, var(--sidebar-w));
+  right: 0;
+  min-width: 0;
+  transform: translateY(0);
+  transition: transform var(--t-topbar) var(--ease);
+  box-shadow: 0 8px 24px oklch(0 0 0 / 0.35);
+}
+
+#app.sidebar-collapsed #topbar.auto-hide {
+  left: 0;
+  padding-left: var(--traffic-lights-w);
+}
+
+#topbar.auto-hide.topbar-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* Thin invisible trigger strip at the top of the window */
+.topbar-trigger {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.topbar-trigger.auto-hide {
+  display: block;
+}
