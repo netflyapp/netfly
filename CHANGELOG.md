@@ -7,8 +7,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- **Auto-hide address bar** (Settings → General) — inspired by Arc/Zen.
-  When enabled, the top bar slides out of view after 600 ms of inactivity.
+- **Auto-hide address bar** (Settings → General) — Orion-inspired.
+  When enabled, the top bar slides out of view 400 ms after the mouse leaves.
   Hover the top 4 px of the window to reveal. Content insets adjust in
   real time so the page fills the full height. Find bar (`⌘F`)
   automatically shows the bar.

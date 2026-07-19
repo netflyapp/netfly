@@ -1,7 +1,7 @@
 import { ipc } from '../ipc'
 import { getState, setUi } from '../state'
 import { el } from '../util/dom'
-import { showTopbar } from './topbar'
+import { scheduleTopbarHide, showTopbar } from './topbar'
 
 let input: HTMLInputElement
 let bar: HTMLElement
@@ -62,4 +62,5 @@ export async function closeFindbar(): Promise<void> {
   setUi({ findOpen: false })
   input.value = ''
   await ipc.focusPage()
+  scheduleTopbarHide()
 }
