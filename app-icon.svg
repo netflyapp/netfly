@@ -1,0 +1,50 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Zen dark surface: near-black with faint cool depth -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1b22"/>
+      <stop offset="0.55" stop-color="#121218"/>
+      <stop offset="1" stop-color="#0b0b0f"/>
+    </linearGradient>
+    <!-- Soft ambient light pooling behind the mark -->
+    <radialGradient id="halo" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0" stop-color="#8b87a8" stop-opacity="0.28"/>
+      <stop offset="0.6" stop-color="#8b87a8" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#8b87a8" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Letter stroke: warm porcelain fading to cool mist -->
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f6f2"/>
+      <stop offset="1" stop-color="#b7b3cc"/>
+    </linearGradient>
+    <!-- Hairline top edge highlight -->
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.18" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="26" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- macOS-style tile: 824px rounded square, 100px canvas margin -->
+  <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#bg)"/>
+  <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#halo)"/>
+  <rect x="102.5" y="102.5" width="819" height="819" rx="184" fill="none"
+        stroke="url(#rim)" stroke-width="5"/>
+
+  <!-- Faint enso arc — zen accent, off-center, barely there -->
+  <circle cx="512" cy="512" r="308" fill="none" stroke="#8b87a8" stroke-opacity="0.14"
+          stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="1450 490" transform="rotate(-64 512 512)"/>
+
+  <!-- The N: one continuous stroke, rounded joins, soft glow -->
+  <path d="M 382 668 L 382 356 L 642 668 L 642 356"
+        filter="url(#glow)" stroke="url(#ink)" stroke-width="74"
+        stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

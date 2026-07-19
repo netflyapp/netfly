@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rust-checks:
+    name: Rust checks
+    runs-on: macos-14
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cd src-tauri && cargo fmt --check
+      - run: cd src-tauri && cargo clippy -- -D warnings
+
+  test:
+    name: Test
+    runs-on: macos-14
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cd src-tauri && cargo test
+
+  build:
+    name: Build
+    runs-on: macos-14
+    timeout-minutes: 30
+    needs: [rust-checks, test]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run app:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: netfly-dmg
+          path: src-tauri/target/release/bundle/dmg/*.dmg
+          if-no-files-found: error
+
+  release:
+    name: Release
+    runs-on: macos-14
+    needs: [build]
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: netfly-dmg
+      - name: Upload Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.dmg"
+          generate_release_notes: true

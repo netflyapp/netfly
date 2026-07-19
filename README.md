@@ -1,8 +1,18 @@
 # Netfly
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/miloszzajac/netfly/actions/workflows/build.yml/badge.svg)](https://github.com/miloszzajac/netfly/actions/workflows/build.yml)
+
 An ultra-light macOS browser with an Arc/Zen-style interface, built on
 Tauri 2 and the system WebKit engine. The entire frontend weighs
 **7.6 kB JS + 3 kB CSS (gzipped)** — vanilla TypeScript, zero UI frameworks.
+
+## Download
+
+Grab the latest `.dmg` from [Releases](https://github.com/miloszzajac/netfly/releases).
+Open the disk image, drag Netfly to your Applications folder, and you're done.
+
+**Requirements:** macOS 12.0+
 
 ## Features
 
@@ -116,6 +126,11 @@ cd src-tauri && cargo test
   changes.
 - Design docs and implementation plans live in `docs/superpowers/`.
 
+## Contributing
+
+Contributions are welcome! Open an issue or pull request on
+[GitHub](https://github.com/miloszzajac/netfly).
+
 ## License
 
-Private project — no license granted.
+MIT — see [LICENSE](LICENSE). Copyright (c) 2026 miloszzajac.
